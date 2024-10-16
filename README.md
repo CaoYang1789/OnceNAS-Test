@@ -54,7 +54,7 @@ python run_once_search.py
 
 ![image](https://github.com/user-attachments/assets/3e96315f-c75a-4bf8-9688-177f795924b2)
 
-## 5 Result Analysis
+## 5. Result Analysis
 
 ### 1. Reduce Cell
 This section represents the reduce cell in the network architecture. In DARTS, the reduce cell is responsible for reducing the size of feature maps, usually through pooling or convolution operations. It contains several nodes, and each node applies different operations.
@@ -110,3 +110,8 @@ Architecture matrix: [[[1. 5. 0. 0. 0.]
 ```
 
 The matrix provides a numerical representation of the operations and the nodes they connect to in the architecture.
+
+## PS:
+As shown in screenshot, the open-source code of OnceNAS only retains the evaluation part based on DARTS. This is of limited significance, and the virtual machine has been deleted to save costs. Therefore, most of the content, except for the output screenshots, is reconstructed from memory and may contain errors.
+![image](https://github.com/user-attachments/assets/4c99692f-253e-4f92-9ea0-25bb1aea854c)
+
