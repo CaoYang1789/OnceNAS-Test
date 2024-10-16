@@ -1,4 +1,4 @@
-# OnceNAS Project Summary
+# OnceNAS test Summary
 
 ## 1. Environment Setup and Dependency Installation
 
@@ -53,3 +53,60 @@ python run_once_search.py
 ```
 
 ![image](https://github.com/user-attachments/assets/3e96315f-c75a-4bf8-9688-177f795924b2)
+
+## 5 Result Analysis
+
+### 1. Reduce Cell
+This section represents the reduce cell in the network architecture. In DARTS, the reduce cell is responsible for reducing the size of feature maps, usually through pooling or convolution operations. It contains several nodes, and each node applies different operations.
+
+```
+There are 4 nodes with optional operations in this reduce cell
+The 3-th node (node 2) is with op: [('dil_conv_3x3', 0), ('none', 1)]
+The 4-th node (node 3) is with op: [('sep_conv_5x5', 2), ('avg_pool_3x3', 0)]
+The 5-th node (node 4) is with op: [('skip_connect', 0), ('dil_conv_3x3', 1)]
+The 6-th node (node 5) is with op: [('dil_conv_5x5', 0), ('sep_conv_5x5', 3)]
+```
+
+- **The 3-th node (node 2)**: This node executes two operations:
+  - `('dil_conv_3x3', 0)`: Uses 3x3 dilation convolution connected to node 0.
+  - `('none', 1)`: A skip connection (none) to node 1.
+
+- **The 4-th node (node 3)**: This node executes two operations:
+  - `('sep_conv_5x5', 2)`: Uses 5x5 separable convolution connected to node 2.
+  - `('avg_pool_3x3', 0)`: Uses 3x3 average pooling connected to node 0.
+
+The remaining nodes follow a similar pattern, describing the operations each node performs and the nodes they connect to.
+
+### 2. Normal Cell
+The normal cell is responsible for keeping the feature map size constant. Like the reduce cell, it contains multiple nodes, each executing different operations.
+
+```
+There are 4 nodes with optional operations in this normal cell
+The 3-th node (node 2) is with op: [('max_pool_3x3', 0), ('sep_conv_5x5', 1)]
+The 4-th node (node 3) is with op: [('sep_conv_5x5', 0), ('dil_conv_5x5', 2)]
+The 5-th node (node 4) is with op: [('avg_pool_3x3', 2), ('dil_conv_3x3', 1)]
+The 6-th node (node 5) is with op: [('dil_conv_3x3', 2), ('none', 0)]
+```
+
+- **The 3-th node (node 2)**: This node performs two operations:
+  - `('max_pool_3x3', 0)`: Uses 3x3 max pooling connected to node 0.
+  - `('sep_conv_5x5', 1)`: Uses 5x5 separable convolution connected to node 1.
+
+The rest of the nodes are described in a similar format, indicating the operations they perform and the connections between them.
+
+### 3. Architecture Matrix
+The architecture matrix is a 2D array that represents the connections between operations and nodes in the network. Each row in the matrix corresponds to a node in the architecture, and each number represents an operation or connection.
+
+```
+Architecture matrix: [[[1. 5. 0. 0. 0.]
+                       [5. 0. 7. 0. 0.]
+                       [0. 6. 2. 0. 0.]
+                       [0. 0. 6. 0. 0.]]
+
+                      [[6. 0. 0. 0. 0.]
+                       [2. 0. 5. 0. 0.]
+                       [3. 6. 0. 0. 0.]
+                       [7. 0. 0. 5. 0.]]]
+```
+
+The matrix provides a numerical representation of the operations and the nodes they connect to in the architecture.
