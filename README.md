@@ -86,7 +86,7 @@ python run_once_search.py
 
 ![image](https://github.com/user-attachments/assets/3e96315f-c75a-4bf8-9688-177f795924b2)
 
-## 5. Result Analysis
+## 5. Results Analysis
 
 ### 1. Reduce Cell
 This section represents the reduce cell in the network architecture. In DARTS, the reduce cell is responsible for reducing the size of feature maps, usually through pooling or convolution operations. It contains several nodes, and each node applies different operations.
