@@ -41,7 +41,7 @@ git clone https://github.com/OnceNAS-Bench/OnceNAS-Bench.git
 
 ## 3. Evaluating OnceNAS Architectures
 
-OnceNAS provides an API that allows for loading architecture data and performing architecture evaluations. You used the `DartsBenchAPI` from `api_darts.py` to load the dataset and define the architecture. The codes are shown in `run_once_search.py`.
+OnceNAS provides an API that allows for loading architecture data and performing architecture evaluations. You used the `DartsBenchAPI` from `api_darts.py` to load the dataset and define the architecture. eg `run_once_search.py`.
 ```python
 from api_darts import DartsBenchAPI as API
 
